@@ -1,0 +1,8 @@
+{
+  "name": "scanreq-functions",
+  "version": "1.0.0",
+  "dependencies": {
+    "stripe": "^17.7.0",
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}
