@@ -393,9 +393,17 @@
         <li><span class="check">✓</span> All future Pro updates included</li>
         <li><span class="check">✓</span> Priority support</li>
       </ul>
-      <button class="btn btn-primary" id="checkoutBtn" onclick="startCheckout()">
-        → Get Pro now
+      <button class="btn btn-primary" disabled style="opacity:0.5; cursor:not-allowed;">
+        → Coming soon
       </button>
+      <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:14px; font-family:-apple-system,sans-serif; line-height:1.6;">
+        Pro is launching very soon. Leave your email and we'll notify you the moment it's available — with an early-bird discount.
+      </p>
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <input type="email" id="notifyEmail" placeholder="your@email.com" style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:8px 12px; color:var(--text); font-size:12px; font-family:monospace; outline:none;">
+        <button onclick="submitNotify()" style="background:var(--surface2); border:1px solid rgba(124,106,247,0.3); color:var(--accent2); padding:8px 14px; border-radius:6px; font-size:12px; cursor:pointer; font-family:monospace; white-space:nowrap; transition:background 0.2s;">Notify me →</button>
+      </div>
+      <p id="notifyFeedback" style="font-size:11px; color:var(--green); margin-top:10px; display:none; font-family:-apple-system,sans-serif;">✓ You're on the list. We'll be in touch.</p>
     </div>
   </div>
 
@@ -491,35 +499,20 @@
     document.getElementById('label-eur').className = currentCurrency === 'eur' ? 'active' : '';
   }
 
-  async function startCheckout() {
-    const btn = document.getElementById('checkoutBtn');
-    btn.textContent = '→ Redirecting...';
-    btn.classList.add('loading-btn');
-
-    try {
-      const response = await fetch('/api/create-checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ currency: currentCurrency })
-      });
-
-      const data = await response.json();
-
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        throw new Error(data.error || 'Unknown error');
-      }
-    } catch (err) {
-      console.error(err);
-      btn.textContent = '→ Error — try again';
-      btn.classList.remove('loading-btn');
-      btn.style.background = '#ef4444';
-      setTimeout(() => {
-        btn.textContent = '→ Get Pro now';
-        btn.style.background = '';
-      }, 3000);
+  function submitNotify() {
+    const email = document.getElementById('notifyEmail').value.trim();
+    const feedback = document.getElementById('notifyFeedback');
+    if (!email || !email.includes('@')) {
+      document.getElementById('notifyEmail').style.borderColor = '#ef4444';
+      return;
     }
+    document.getElementById('notifyEmail').style.borderColor = '';
+    // Guardamos en localStorage para no perderlo — el backend lo procesará cuando esté listo
+    const emails = JSON.parse(localStorage.getItem('scanreq-notify') || '[]');
+    if (!emails.includes(email)) { emails.push(email); }
+    localStorage.setItem('scanreq-notify', JSON.stringify(emails));
+    feedback.style.display = 'block';
+    document.getElementById('notifyEmail').value = '';
   }
 </script>
 
