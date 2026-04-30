@@ -17,7 +17,6 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  // Protección de origen — solo scanreq.com puede crear sesiones de checkout
   const origin = event.headers['origin'] || '';
   if (!ALLOWED_ORIGINS.includes(origin)) {
     console.warn('Forbidden origin:', origin);
@@ -27,6 +26,8 @@ exports.handler = async (event) => {
   try {
     const { currency = 'usd' } = JSON.parse(event.body || '{}');
     const priceId = PRICE_IDS[currency] ?? PRICE_IDS.usd;
+
+    console.log('Creating checkout — currency:', currency, 'priceId:', priceId);
 
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -48,11 +49,11 @@ exports.handler = async (event) => {
       body: JSON.stringify({ url: session.url })
     };
   } catch (error) {
-    console.error('create-checkout error:', error);
+    console.error('create-checkout error:', error.message, error.type, error.code);
     return {
       statusCode: 500,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: error.message })
+      body: JSON.stringify({ error: error.message, type: error.type, code: error.code })
     };
   }
 };
