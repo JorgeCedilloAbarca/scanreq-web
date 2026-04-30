@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScanReq — Pricing</title>
+  <meta name="description" content="Get ScanReq Pro. Full CVE coverage, compatibility analysis, and AI-ready reports. One-time payment, no subscription.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #16161f;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+      --red: #f87171;
+      --orange: #fb923c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 15px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .nav-logo .logo-mark {
+      display: inline-flex; width: 22px; height: 22px;
+      background: var(--accent); border-radius: 4px;
+      align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 900; color: white;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 13px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links .btn-install {
+      color: var(--accent2); border: 1px solid rgba(124,106,247,0.3);
+      padding: 6px 14px; border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links .btn-install:hover {
+      background: rgba(124,106,247,0.1); color: var(--accent2);
+    }
+
+    /* MAIN */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    .page-label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .subtitle {
+      font-size: 16px; color: var(--muted);
+      max-width: 520px; margin-bottom: 60px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* PRICING CARDS */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    @media (max-width: 640px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    .plan-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      position: relative;
+    }
+
+    .plan-card.featured {
+      background: var(--surface2);
+    }
+
+    .plan-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(124,106,247,0.15);
+      color: var(--accent2); border: 1px solid rgba(124,106,247,0.3);
+      margin-bottom: 20px;
+    }
+
+    .plan-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .plan-price {
+      font-size: 48px; font-weight: 800; letter-spacing: -0.04em;
+      color: var(--text); line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .plan-price span {
+      font-size: 20px; font-weight: 400; color: var(--muted);
+      vertical-align: super; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .plan-price-note {
+      font-size: 12px; color: var(--muted); margin-bottom: 28px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .plan-features {
+      list-style: none; margin-bottom: 32px;
+    }
+
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+    }
+
+    .plan-features li:last-child { border-bottom: none; }
+
+    .plan-features li .check { color: var(--green); flex-shrink: 0; margin-top: 1px; }
+    .plan-features li .dash { color: var(--muted); flex-shrink: 0; margin-top: 1px; }
+    .plan-features li.inactive { color: var(--muted); }
+
+    .btn {
+      display: block; width: 100%; padding: 13px 24px;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      text-align: center; cursor: pointer; border: none;
+      text-decoration: none; transition: all 0.2s;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+    .btn-primary:hover { background: #6a58e8; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    /* CURRENCY TOGGLE */
+    .currency-toggle {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 32px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .currency-toggle span { font-size: 13px; color: var(--muted); }
+    .currency-toggle span.active { color: var(--text); font-weight: 600; }
+
+    .toggle-switch {
+      position: relative; width: 40px; height: 22px; cursor: pointer;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; inset: 0;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 22px; transition: 0.3s;
+    }
+    .toggle-slider::before {
+      content: ''; position: absolute;
+      width: 16px; height: 16px; left: 2px; top: 2px;
+      background: var(--accent); border-radius: 50%;
+      transition: 0.3s;
+    }
+    .toggle-switch input:checked + .toggle-slider::before {
+      transform: translateX(18px);
+    }
+
+    /* WHY PRO SECTION */
+    .why-section {
+      margin-bottom: 60px;
+    }
+
+    .section-label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .why-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .why-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 24px;
+    }
+
+    .why-card .icon {
+      font-size: 20px; margin-bottom: 12px;
+    }
+
+    .why-card h3 {
+      font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--text);
+    }
+
+    .why-card p {
+      font-size: 12px; color: var(--muted); line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* AI COST CALLOUT */
+    .ai-callout {
+      background: var(--surface);
+      border: 1px solid rgba(124,106,247,0.2);
+      border-radius: 12px; padding: 28px 32px;
+      margin-bottom: 60px;
+      display: flex; gap: 24px; align-items: flex-start;
+    }
+
+    .ai-callout .callout-icon {
+      font-size: 28px; flex-shrink: 0;
+    }
+
+    .ai-callout h3 {
+      font-size: 14px; font-weight: 700; margin-bottom: 8px; color: var(--text);
+    }
+
+    .ai-callout p {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .ai-callout strong { color: var(--accent2); }
+
+    /* FAQ */
+    .faq-section { margin-bottom: 60px; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border); padding: 20px 0;
+    }
+
+    .faq-q {
+      font-size: 13px; font-weight: 600; color: var(--text);
+      margin-bottom: 8px; cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .faq-a {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: var(--muted);
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    .loading-btn { opacity: 0.7; pointer-events: none; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="logo-mark">S</span>
+    ScanReq
+  </a>
+  <div class="nav-links">
+    <a href="/#features">Features</a>
+    <a href="/pricing" style="color: var(--text);">Pricing</a>
+    <a href="/#install">Install</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-install">→ Install Free</a>
+  </div>
+</nav>
+
+<main>
+  <p class="page-label">Pricing</p>
+  <h1>One payment.<br>Unlimited scans.</h1>
+  <p class="subtitle">No subscriptions. No per-seat fees. Pay once, use forever on any project.</p>
+
+  <!-- CURRENCY TOGGLE -->
+  <div class="currency-toggle">
+    <span class="active" id="label-usd">USD $</span>
+    <label class="toggle-switch">
+      <input type="checkbox" id="currencyToggle" onchange="toggleCurrency()">
+      <span class="toggle-slider"></span>
+    </label>
+    <span id="label-eur">EUR €</span>
+  </div>
+
+  <!-- PRICING CARDS -->
+  <div class="pricing-grid">
+    <!-- FREE -->
+    <div class="plan-card">
+      <p class="plan-name">Free</p>
+      <p class="plan-price"><span></span>$0</p>
+      <p class="plan-price-note">Forever free, no credit card</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> PyPI version check</li>
+        <li><span class="check">✓</span> CVE detection (exact versions ==)</li>
+        <li><span class="check">✓</span> Visual results panel</li>
+        <li><span class="check">✓</span> Smart insights</li>
+        <li><span class="check">✓</span> Auto-refresh on save</li>
+        <li><span class="check">✓</span> English & Spanish</li>
+        <li class="inactive"><span class="dash">—</span> CVEs for non-exact versions</li>
+        <li class="inactive"><span class="dash">—</span> Compatibility analysis</li>
+        <li class="inactive"><span class="dash">—</span> Safe update recommendations</li>
+        <li class="inactive"><span class="dash">—</span> AI prompt export</li>
+      </ul>
+      <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn btn-secondary">
+        → Install Free
+      </a>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card featured">
+      <span class="plan-badge">⚡ Most popular</span>
+      <p class="plan-name">Pro</p>
+      <p class="plan-price" id="price-display"><span>$</span>19</p>
+      <p class="plan-price-note" id="price-note">One-time payment · 1 developer license</p>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Everything in Free</li>
+        <li><span class="check">✓</span> CVEs for non-exact versions (>=, ~=…)</li>
+        <li><span class="check">✓</span> Cross-version compatibility analysis</li>
+        <li><span class="check">✓</span> Dependency conflict detection</li>
+        <li><span class="check">✓</span> Safe update recommendations</li>
+        <li><span class="check">✓</span> 🤖 AI prompt export (Claude, Copilot, Cursor)</li>
+        <li><span class="check">✓</span> Instant license activation</li>
+        <li><span class="check">✓</span> All future Pro updates included</li>
+        <li><span class="check">✓</span> Priority support</li>
+      </ul>
+      <button class="btn btn-primary" id="checkoutBtn" onclick="startCheckout()">
+        → Get Pro now
+      </button>
+    </div>
+  </div>
+
+  <!-- AI COST CALLOUT -->
+  <div class="ai-callout">
+    <div class="callout-icon">🤖</div>
+    <div>
+      <h3>Why not just ask an AI to do this?</h3>
+      <p>An AI agent doing what ScanReq Pro does would need to query PyPI, OSV.dev, and cross-reference all dependency metadata in real time. That costs <strong>~$0.85 per scan in tokens</strong> with Claude Opus or GPT-4o. With Pro you pay <strong>$19 once</strong> and scan unlimited. After 23 scans you're already ahead — and a developer working on a real project hits that in a week.</p>
+      <p style="margin-top:10px;">Plus, AI has no access to your local environment and doesn't know about CVEs published last week. ScanReq Pro queries PyPI and OSV.dev live, every time.</p>
+    </div>
+  </div>
+
+  <!-- WHY PRO -->
+  <div class="why-section">
+    <p class="section-label">Why Pro</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">🔍</div>
+        <h3>Full CVE coverage</h3>
+        <p>Free only checks exact versions (==). Pro detects your actual installed version via pip and scans everything — >=, ~=, ranges, unpinned.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h3>Conflict detection</h3>
+        <p>Knows when flask==2.0.0 breaks with werkzeug==3.0.0 before you ship. Cross-references requires_dist from PyPI for every package.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🤖</div>
+        <h3>AI-ready reports</h3>
+        <p>One click copies a structured prompt with CVEs, conflicts, and safe update recommendations. Paste into Claude or Copilot — done.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🛡️</div>
+        <h3>Safe update path</h3>
+        <p>Don't guess which version to upgrade to. Pro tells you the exact version that fixes the CVE and doesn't break your other dependencies.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <p class="section-label">FAQ</p>
+    <div class="faq-item">
+      <p class="faq-q">Is this really a one-time payment?</p>
+      <p class="faq-a">Yes. You pay once and own the Pro license permanently. No subscription, no renewal. Future Pro features are included.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">How do I activate Pro after payment?</p>
+      <p class="faq-a">After payment you'll receive a license token on the success page. In VS Code, open the Command Palette (Ctrl+Shift+P) and run "ScanReq: Activate Pro Plan". Enter your token and you're done.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Does it work without pip installed?</p>
+      <p class="faq-a">The CVE scanning and PyPI checks work without pip. pip is only needed for the auto-detection of installed versions for non-exact specifiers. If pip isn't available, ScanReq shows a clear notice inside the panel.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Can I use it on multiple machines?</p>
+      <p class="faq-a">The license is per developer, not per machine. You can activate it on your work and personal machines as long as it's the same developer.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What payment methods are accepted?</p>
+      <p class="faq-a">All major credit and debit cards via Stripe. Stripe handles the payment securely — ScanReq never sees your card details.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>© 2026 TrustDev · ScanReq</span>
+  <div style="display:flex; gap:20px;">
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq">Marketplace</a>
+    <a href="mailto:jcedatm775@gmail.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+  let currentCurrency = 'usd';
+
+  const prices = {
+    usd: { symbol: '$', amount: '19', note: 'One-time payment · 1 developer license' },
+    eur: { symbol: '€', amount: '17', note: 'Pago único · Licencia para 1 desarrollador' }
+  };
+
+  function toggleCurrency() {
+    const toggle = document.getElementById('currencyToggle');
+    currentCurrency = toggle.checked ? 'eur' : 'usd';
+    const p = prices[currentCurrency];
+
+    document.getElementById('price-display').innerHTML = `<span>${p.symbol}</span>${p.amount}`;
+    document.getElementById('price-note').textContent = p.note;
+    document.getElementById('label-usd').className = currentCurrency === 'usd' ? 'active' : '';
+    document.getElementById('label-eur').className = currentCurrency === 'eur' ? 'active' : '';
+  }
+
+  async function startCheckout() {
+    const btn = document.getElementById('checkoutBtn');
+    btn.textContent = '→ Redirecting...';
+    btn.classList.add('loading-btn');
+
+    try {
+      const response = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ currency: currentCurrency })
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Unknown error');
+      }
+    } catch (err) {
+      console.error(err);
+      btn.textContent = '→ Error — try again';
+      btn.classList.remove('loading-btn');
+      btn.style.background = '#ef4444';
+      setTimeout(() => {
+        btn.textContent = '→ Get Pro now';
+        btn.style.background = '';
+      }, 3000);
+    }
+  }
+</script>
+
+</body>
+</html>

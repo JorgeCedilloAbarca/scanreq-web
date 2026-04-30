@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScanReq Pro — Activated</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #16161f;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 56px; height: 56px;
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 24px;
+    }
+
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(124,106,247,0.15);
+      color: var(--accent2); border: 1px solid rgba(124,106,247,0.3);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 24px; font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 14px; color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin-bottom: 36px; line-height: 1.6;
+    }
+
+    /* TOKEN BOX */
+    .token-section {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .token-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+
+    .token-value {
+      font-size: 15px; font-weight: 700; letter-spacing: 0.05em;
+      color: var(--accent2);
+      word-break: break-all;
+      margin-bottom: 12px;
+    }
+
+    .loading-token {
+      font-size: 13px; color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .copy-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(124,106,247,0.1);
+      border: 1px solid rgba(124,106,247,0.3);
+      color: var(--accent2);
+      padding: 7px 14px; border-radius: 6px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: rgba(124,106,247,0.2); }
+    .copy-feedback { font-size: 11px; color: var(--green); margin-left: 8px; opacity: 0; transition: opacity 0.3s; }
+    .copy-feedback.visible { opacity: 1; }
+
+    /* STEPS */
+    .steps {
+      text-align: left; margin-bottom: 32px;
+    }
+
+    .steps-title {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 16px;
+    }
+
+    .step {
+      display: flex; gap: 14px; align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .step-num {
+      width: 22px; height: 22px; flex-shrink: 0;
+      background: rgba(124,106,247,0.15);
+      border: 1px solid rgba(124,106,247,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--accent2);
+    }
+
+    .step-text {
+      font-size: 13px; color: var(--text); padding-top: 2px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.5;
+    }
+
+    .step-text code {
+      background: var(--surface2); padding: 1px 6px;
+      border-radius: 4px; font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 12px; color: var(--accent2);
+    }
+
+    .btn-back {
+      display: inline-block;
+      color: var(--muted); font-size: 13px; text-decoration: none;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transition: color 0.2s;
+    }
+    .btn-back:hover { color: var(--text); }
+
+    .error-card {
+      background: rgba(248,113,113,0.05);
+      border: 1px solid rgba(248,113,113,0.2);
+      border-radius: 10px; padding: 20px 24px;
+      margin-bottom: 24px; display: none;
+    }
+    .error-card p {
+      font-size: 13px; color: #f87171;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="success-icon">⚡</div>
+  <span class="badge">⚡ Pro activated</span>
+  <h1>You're in.</h1>
+  <p class="subtitle">Payment confirmed. Here's your license token — save it somewhere safe, you'll need it to activate Pro in VS Code.</p>
+
+  <div class="error-card" id="errorCard">
+    <p id="errorMsg">Could not retrieve your token. Please contact support at <a href="mailto:jcedatm775@gmail.com" style="color:#f87171;">jcedatm775@gmail.com</a> with your order details.</p>
+  </div>
+
+  <div class="token-section">
+    <p class="token-label">Your license token</p>
+    <p class="token-value" id="tokenValue">
+      <span class="loading-token">Retrieving your token...</span>
+    </p>
+    <div style="display:flex; align-items:center;">
+      <button class="copy-btn" id="copyBtn" onclick="copyToken()" style="display:none;">
+        📋 Copy token
+      </button>
+      <span class="copy-feedback" id="copyFeedback">✓ Copied</span>
+    </div>
+  </div>
+
+  <div class="steps">
+    <p class="steps-title">How to activate</p>
+    <div class="step">
+      <span class="step-num">1</span>
+      <p class="step-text">Open VS Code and press <code>Ctrl+Shift+P</code> (or <code>Cmd+Shift+P</code> on Mac)</p>
+    </div>
+    <div class="step">
+      <span class="step-num">2</span>
+      <p class="step-text">Type <code>ScanReq: Activate Pro Plan</code> and press Enter</p>
+    </div>
+    <div class="step">
+      <span class="step-num">3</span>
+      <p class="step-text">Paste your license token and confirm — Pro activates instantly</p>
+    </div>
+  </div>
+
+  <a href="/" class="btn-back">← Back to scanreq.com</a>
+</div>
+
+<script>
+  async function getToken() {
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+
+    if (!sessionId) {
+      showError('No session ID found. If you just completed a payment, please contact support.');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/get-token?session_id=' + encodeURIComponent(sessionId));
+      const data = await response.json();
+
+      if (data.token) {
+        document.getElementById('tokenValue').textContent = data.token;
+        document.getElementById('copyBtn').style.display = 'inline-flex';
+      } else {
+        showError(data.message || 'Token not found. Please contact support.');
+      }
+    } catch (err) {
+      showError('Could not connect to the server. Please try refreshing the page.');
+    }
+  }
+
+  function showError(msg) {
+    document.getElementById('tokenValue').innerHTML = '<span class="loading-token">—</span>';
+    document.getElementById('errorMsg').innerHTML = msg + ' Contact us at <a href="mailto:jcedatm775@gmail.com" style="color:#f87171;">jcedatm775@gmail.com</a>';
+    document.getElementById('errorCard').style.display = 'block';
+  }
+
+  function copyToken() {
+    const token = document.getElementById('tokenValue').textContent;
+    navigator.clipboard.writeText(token).then(() => {
+      const feedback = document.getElementById('copyFeedback');
+      feedback.classList.add('visible');
+      setTimeout(() => feedback.classList.remove('visible'), 2000);
+    });
+  }
+
+  getToken();
+</script>
+
+</body>
+</html>
