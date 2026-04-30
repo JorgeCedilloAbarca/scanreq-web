@@ -61,7 +61,7 @@
 
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 13px;
+      color: #9898b0; text-decoration: none; font-size: 13px;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--text); }
@@ -345,8 +345,8 @@
   <!-- CURRENCY TOGGLE -->
   <div class="currency-toggle">
     <span class="active" id="label-usd">USD $</span>
-    <label class="toggle-switch">
-      <input type="checkbox" id="currencyToggle" onchange="toggleCurrency()">
+    <label class="toggle-switch" aria-label="Switch currency between USD and EUR">
+      <input type="checkbox" id="currencyToggle" onchange="toggleCurrency()" aria-label="Toggle currency">
       <span class="toggle-slider"></span>
     </label>
     <span id="label-eur">EUR €</span>
@@ -411,7 +411,7 @@
   <div class="ai-callout">
     <div class="callout-icon">🤖</div>
     <div>
-      <h3>Why not just ask an AI to do this?</h3>
+      <h2 style="font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text);">Why not just ask an AI to do this?</h2>
       <p>An AI agent doing what ScanReq Pro does would need to query PyPI, OSV.dev, and cross-reference all dependency metadata in real time. That costs <strong>~$0.85 per scan in tokens</strong> with Claude Opus or GPT-4o. With Pro you pay <strong>$19 once</strong> and scan unlimited. After 23 scans you're already ahead — and a developer working on a real project hits that in a week.</p>
       <p style="margin-top:10px;">Plus, AI has no access to your local environment and doesn't know about CVEs published last week. ScanReq Pro queries PyPI and OSV.dev live, every time.</p>
     </div>
@@ -499,36 +499,20 @@
     document.getElementById('label-eur').className = currentCurrency === 'eur' ? 'active' : '';
   }
 
-  async function submitNotify() {
-    const emailInput = document.getElementById('notifyEmail');
+  function submitNotify() {
+    const email = document.getElementById('notifyEmail').value.trim();
     const feedback = document.getElementById('notifyFeedback');
-    const email = emailInput.value.trim();
-
     if (!email || !email.includes('@')) {
-      emailInput.style.borderColor = '#ef4444';
+      document.getElementById('notifyEmail').style.borderColor = '#ef4444';
       return;
     }
-    emailInput.style.borderColor = '';
-
-    try {
-      const response = await fetch('/api/notify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, currency: currentCurrency })
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        feedback.style.display = 'block';
-        emailInput.value = '';
-      } else {
-        emailInput.style.borderColor = '#ef4444';
-      }
-    } catch (err) {
-      console.error(err);
-      emailInput.style.borderColor = '#ef4444';
-    }
+    document.getElementById('notifyEmail').style.borderColor = '';
+    // Guardamos en localStorage para no perderlo — el backend lo procesará cuando esté listo
+    const emails = JSON.parse(localStorage.getItem('scanreq-notify') || '[]');
+    if (!emails.includes(email)) { emails.push(email); }
+    localStorage.setItem('scanreq-notify', JSON.stringify(emails));
+    feedback.style.display = 'block';
+    document.getElementById('notifyEmail').value = '';
   }
 </script>
 
