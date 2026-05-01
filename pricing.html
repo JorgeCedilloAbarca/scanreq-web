@@ -360,7 +360,8 @@
       <p class="plan-price"><span></span>$0</p>
       <p class="plan-price-note">Forever free, no credit card</p>
       <ul class="plan-features">
-        <li><span class="check">✓</span> PyPI version check</li>
+        <li><span class="check">✓</span> Python & Node.js support</li>
+        <li><span class="check">✓</span> Registry version check (PyPI, npm)</li>
         <li><span class="check">✓</span> CVE detection (exact versions ==)</li>
         <li><span class="check">✓</span> Visual results panel</li>
         <li><span class="check">✓</span> Smart insights</li>
@@ -384,7 +385,8 @@
       <p class="plan-price-note" id="price-note">One-time payment · 1 developer license</p>
       <ul class="plan-features">
         <li><span class="check">✓</span> Everything in Free</li>
-        <li><span class="check">✓</span> CVEs for non-exact versions (>=, ~=…)</li>
+        <li><span class="check">✓</span> CVEs for non-exact versions (>=, ~=, ^…)</li>
+        <li><span class="check">✓</span> Auto-detect installed version (pip / node_modules)</li>
         <li><span class="check">✓</span> Cross-version compatibility analysis</li>
         <li><span class="check">✓</span> Dependency conflict detection</li>
         <li><span class="check">✓</span> Safe update recommendations</li>
@@ -456,8 +458,8 @@
       <p class="faq-a">After payment you'll receive a license token on the success page. In VS Code, open the Command Palette (Ctrl+Shift+P) and run "ScanReq: Activate Pro Plan". Enter your token and you're done.</p>
     </div>
     <div class="faq-item">
-      <p class="faq-q">Does it work without pip installed?</p>
-      <p class="faq-a">The CVE scanning and PyPI checks work without pip. pip is only needed for the auto-detection of installed versions for non-exact specifiers. If pip isn't available, ScanReq shows a clear notice inside the panel.</p>
+      <p class="faq-q">Does it work without pip or npm installed?</p>
+      <p class="faq-a">Yes. The CVE scanning and registry checks work without any local tools. For Pro features, pip is needed to auto-detect installed Python versions, and node_modules must exist to auto-detect Node.js versions. If either is unavailable, ScanReq shows a clear notice inside the panel.</p>
     </div>
     <div class="faq-item">
       <p class="faq-q">Can I use it on multiple machines?</p>

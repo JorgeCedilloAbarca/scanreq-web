@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ScanReq — Python Dependency Security Scanner</title>
-  <meta name="description" content="Real-time CVE detection and outdated package alerts for Python projects — directly inside VS Code. Zero config. Free.">
+  <title>ScanReq — Multi-Ecosystem Dependency Security Scanner</title>
+  <meta name="description" content="Real-time CVE detection and outdated package alerts for Python and Node.js projects — directly inside VS Code. Zero config. Free.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -351,10 +351,10 @@
 <section class="hero">
   <div class="hero-badge">
     <span class="dot"></span>
-    v2.0.0 — Now with Pro features
+    v2.1.0 — Now with Node.js support
   </div>
   <h1>ScanReq</h1>
-  <p class="hero-sub">Real-time CVE detection and outdated package alerts for Python projects — directly inside VS Code. Zero config. Free.</p>
+  <p class="hero-sub">Real-time CVE detection and outdated package alerts for Python and Node.js projects — directly inside VS Code. Zero config. Free.</p>
   <div class="hero-ctas">
     <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-primary">↗ Install for VS Code</a>
     <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" class="btn-ghost">⌥ View on GitHub</a>
@@ -374,13 +374,13 @@
 <section id="features">
   <p class="section-label">What it does</p>
   <h2 class="section-title">Security visibility,<br>zero friction</h2>
-  <p class="section-sub">ScanReq plugs into your existing workflow. Open a Python project and it just works.</p>
+  <p class="section-sub">ScanReq plugs into your existing workflow. Open a project and it just works.</p>
 
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <h3>Real-time PyPI Check</h3>
-      <p>Compares every pinned version against the latest available on PyPI. Outdated packages surface instantly.</p>
+      <div class="feature-icon">🌐</div>
+      <h3>Multi-Ecosystem Support</h3>
+      <p>Scans Python (<code>requirements.txt</code>) and Node.js (<code>package.json</code>) automatically. More ecosystems coming in v2.2.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🛡️</div>
@@ -400,7 +400,7 @@
     <div class="feature-card">
       <div class="feature-icon">⚡</div>
       <h3>Auto-refresh</h3>
-      <p>The panel updates automatically whenever you save requirements.txt. No manual re-runs.</p>
+      <p>The panel updates automatically whenever you save any dependency file. No manual re-runs.</p>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🌍</div>
@@ -457,7 +457,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>PyPI version check</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
+      <tr><td>Python & Node.js support</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
+      <tr><td>Registry version check (PyPI, npm)</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
       <tr><td>CVE detection (exact versions)</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
       <tr><td>Visual results panel</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
       <tr><td>Smart insights</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
