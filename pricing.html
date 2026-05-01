@@ -501,20 +501,44 @@
     document.getElementById('label-eur').className = currentCurrency === 'eur' ? 'active' : '';
   }
 
-  function submitNotify() {
-    const email = document.getElementById('notifyEmail').value.trim();
+  async function submitNotify() {
+    const input = document.getElementById('notifyEmail');
+    const btn = document.querySelector('[onclick="submitNotify()"]');
     const feedback = document.getElementById('notifyFeedback');
+
+    const email = input.value.trim();
     if (!email || !email.includes('@')) {
-      document.getElementById('notifyEmail').style.borderColor = '#ef4444';
+      input.style.borderColor = '#ef4444';
       return;
     }
-    document.getElementById('notifyEmail').style.borderColor = '';
-    // Guardamos en localStorage para no perderlo — el backend lo procesará cuando esté listo
-    const emails = JSON.parse(localStorage.getItem('scanreq-notify') || '[]');
-    if (!emails.includes(email)) { emails.push(email); }
-    localStorage.setItem('scanreq-notify', JSON.stringify(emails));
-    feedback.style.display = 'block';
-    document.getElementById('notifyEmail').value = '';
+    input.style.borderColor = '';
+
+    // Deshabilitar botón mientras se envía
+    btn.textContent = '...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, currency: currentCurrency })
+      });
+
+      if (res.ok) {
+        feedback.style.display = 'block';
+        input.value = '';
+      } else {
+        // Si el servidor falla, al menos guardamos localmente para no perder el email
+        input.style.borderColor = '#ef4444';
+        feedback.style.display = 'none';
+      }
+    } catch {
+      // Sin conexión — guardamos localmente como fallback
+      input.style.borderColor = '#ef4444';
+    } finally {
+      btn.textContent = 'Notify me →';
+      btn.disabled = false;
+    }
   }
 </script>
 

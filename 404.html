@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — ScanReq</title>
+  <meta name="description" content="Page not found — ScanReq">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #9090a8;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(124,106,247,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .code {
+      font-size: clamp(80px, 20vw, 160px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: var(--surface);
+      -webkit-text-stroke: 1px rgba(124,106,247,0.3);
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .code::after {
+      content: '404';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.15;
+    }
+
+    h1 {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 360px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #5a4ee0; color: white;
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; font-family: 'SF Mono', monospace;
+    }
+    .btn-primary:hover { background: #4a3fb5; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--muted);
+      padding: 10px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; text-decoration: none;
+      border: 1px solid var(--border); transition: all 0.2s;
+      font-family: 'SF Mono', monospace;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    footer {
+      position: absolute;
+      bottom: 24px;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <div class="code">404</div>
+  <h1>Page not found</h1>
+  <p>This page doesn't exist or has been moved. Head back home or install ScanReq directly.</p>
+
+  <div class="links">
+    <a href="/" class="btn-primary">← Back to home</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-ghost">↗ Install free</a>
+  </div>
+
+  <footer>
+    © 2026 TrustDev · <a href="/">scanreq.com</a>
+  </footer>
+
+</body>
+</html>
