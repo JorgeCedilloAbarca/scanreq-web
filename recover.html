@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recover your token — ScanReq</title>
+  <meta name="description" content="Lost your ScanReq Pro token? Enter your email and we'll find it for you.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #9090a8;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+      --red: #f87171;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124,106,247,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .logo-icon {
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .logo-text { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; }
+
+    h1 {
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    p.subtitle {
+      font-size: 14px; color: var(--muted);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+
+    label {
+      display: block;
+      font-size: 13px; font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+      font-family: inherit;
+    }
+    input[type="email"]:focus { border-color: var(--accent); }
+    input[type="email"].error { border-color: var(--red); }
+
+    button {
+      width: 100%;
+      background: #5a4ee0;
+      color: white;
+      border: none; border-radius: 8px;
+      padding: 13px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    button:hover:not(:disabled) { background: #4a3fb5; }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .result {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+    .result.success {
+      background: rgba(52,211,153,0.08);
+      border: 1px solid rgba(52,211,153,0.2);
+    }
+    .result.error-msg {
+      background: rgba(248,113,113,0.08);
+      border: 1px solid rgba(248,113,113,0.2);
+      color: var(--red);
+    }
+
+    .result-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.05em; margin-bottom: 8px;
+    }
+
+    .token-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--accent2);
+      word-break: break-all;
+      margin: 8px 0 12px 0;
+      user-select: all;
+    }
+
+    .copy-btn {
+      width: auto;
+      background: rgba(124,106,247,0.15);
+      color: var(--accent2);
+      border: 1px solid rgba(124,106,247,0.3);
+      padding: 8px 16px;
+      font-size: 12px;
+      border-radius: 6px;
+    }
+    .copy-btn:hover { background: rgba(124,106,247,0.25); }
+
+    .instructions {
+      margin-top: 16px;
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+    }
+    .instructions code {
+      background: rgba(255,255,255,0.08);
+      padding: 1px 6px; border-radius: 4px;
+      font-family: 'SF Mono', monospace; font-size: 12px;
+      color: var(--text);
+    }
+
+    .back {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 13px; color: var(--muted);
+    }
+    .back a { color: var(--muted); text-decoration: none; }
+    .back a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo">
+      <div class="logo-icon">🔍</div>
+      <span class="logo-text">ScanReq</span>
+    </div>
+
+    <h1>Recover your token</h1>
+    <p class="subtitle">Enter the email address you used to purchase ScanReq Pro and we'll find your license token.</p>
+
+    <label for="email">Email address</label>
+    <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+
+    <button id="submitBtn" onclick="recover()">Find my token →</button>
+
+    <div class="result success" id="successResult">
+      <div class="result-label">Your license token</div>
+      <div class="token-box" id="tokenDisplay"></div>
+      <button class="copy-btn" onclick="copyToken()">📋 Copy token</button>
+      <div class="instructions">
+        To activate Pro in VS Code:<br>
+        1. Open the Command Palette <code>Ctrl+Shift+P</code><br>
+        2. Run <code>ScanReq: Activar Plan Pro</code><br>
+        3. Paste your token
+      </div>
+    </div>
+
+    <div class="result error-msg" id="errorResult"></div>
+
+    <div class="back">
+      <a href="/">← Back to scanreq.com</a>
+    </div>
+  </div>
+
+  <script>
+    let foundToken = '';
+
+    async function recover() {
+      const email = document.getElementById('email').value.trim();
+      const btn = document.getElementById('submitBtn');
+      const successResult = document.getElementById('successResult');
+      const errorResult = document.getElementById('errorResult');
+      const emailInput = document.getElementById('email');
+
+      // Reset state
+      successResult.style.display = 'none';
+      errorResult.style.display = 'none';
+      emailInput.classList.remove('error');
+
+      if (!email || !email.includes('@')) {
+        emailInput.classList.add('error');
+        emailInput.focus();
+        return;
+      }
+
+      btn.textContent = 'Searching...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/recover-token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        const data = await res.json();
+
+        if (data.success && data.token) {
+          foundToken = data.token;
+          document.getElementById('tokenDisplay').textContent = data.token;
+          successResult.style.display = 'block';
+        } else {
+          errorResult.textContent = 'No active license found for this email. If you think this is an error, contact support at hello@scanreq.com';
+          errorResult.style.display = 'block';
+        }
+      } catch {
+        errorResult.textContent = 'Connection error. Please try again.';
+        errorResult.style.display = 'block';
+      } finally {
+        btn.textContent = 'Find my token →';
+        btn.disabled = false;
+      }
+    }
+
+    function copyToken() {
+      if (!foundToken) { return; }
+      navigator.clipboard.writeText(foundToken).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy token'; }, 2000);
+      });
+    }
+
+    // Permitir Enter en el input
+    document.getElementById('email').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { recover(); }
+    });
+  </script>
+
+</body>
+</html>
