@@ -231,7 +231,6 @@
       const errorResult = document.getElementById('errorResult');
       const emailInput = document.getElementById('email');
 
-      // Reset state
       successResult.style.display = 'none';
       errorResult.style.display = 'none';
       emailInput.classList.remove('error');
@@ -259,7 +258,7 @@
           document.getElementById('tokenDisplay').textContent = data.token;
           successResult.style.display = 'block';
         } else {
-          errorResult.textContent = 'No active license found for this email. If you think this is an error, contact support at hello@scanreq.com';
+          errorResult.textContent = 'No active license found for this email. If you think this is an error, contact support at support@scanreq.com';
           errorResult.style.display = 'block';
         }
       } catch {
@@ -280,7 +279,6 @@
       });
     }
 
-    // Permitir Enter en el input
     document.getElementById('email').addEventListener('keydown', (e) => {
       if (e.key === 'Enter') { recover(); }
     });

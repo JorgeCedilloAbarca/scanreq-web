@@ -77,7 +77,6 @@
       margin-bottom: 36px; line-height: 1.6;
     }
 
-    /* TOKEN BOX */
     .token-section {
       background: var(--surface2);
       border: 1px solid var(--border);
@@ -118,7 +117,6 @@
     .copy-feedback { font-size: 11px; color: var(--green); margin-left: 8px; opacity: 0; transition: opacity 0.3s; }
     .copy-feedback.visible { opacity: 1; }
 
-    /* STEPS */
     .steps {
       text-align: left; margin-bottom: 32px;
     }
@@ -176,14 +174,14 @@
 </head>
 <body>
 
-<main>
+<div class="card">
   <div class="success-icon">⚡</div>
   <span class="badge">⚡ Pro activated</span>
   <h1>You're in.</h1>
   <p class="subtitle">Payment confirmed. Here's your license token — save it somewhere safe, you'll need it to activate Pro in VS Code.</p>
 
   <div class="error-card" id="errorCard">
-    <p id="errorMsg">Could not retrieve your token. Please contact support at <a href="mailto:jcedatm775@gmail.com" style="color:#f87171;">jcedatm775@gmail.com</a> with your order details.</p>
+    <p id="errorMsg">Could not retrieve your token. Please contact support at <a href="mailto:support@scanreq.com" style="color:#f87171;">support@scanreq.com</a> with your order details.</p>
   </div>
 
   <div class="token-section">
@@ -207,7 +205,7 @@
     </div>
     <div class="step">
       <span class="step-num">2</span>
-      <p class="step-text">Type <code>ScanReq: Activate Pro Plan</code> and press Enter</p>
+      <p class="step-text">Type <code>ScanReq: Activar Plan Pro</code> and press Enter</p>
     </div>
     <div class="step">
       <span class="step-num">3</span>
@@ -217,8 +215,6 @@
 
   <a href="/" class="btn-back">← Back to scanreq.com</a>
 </div>
-
-</main>
 
 <script>
   async function getToken() {
@@ -247,7 +243,7 @@
 
   function showError(msg) {
     document.getElementById('tokenValue').innerHTML = '<span class="loading-token">—</span>';
-    document.getElementById('errorMsg').innerHTML = msg + ' Contact us at <a href="mailto:jcedatm775@gmail.com" style="color:#f87171;">jcedatm775@gmail.com</a>';
+    document.getElementById('errorMsg').innerHTML = msg + ' Contact us at <a href="mailto:support@scanreq.com" style="color:#f87171;">support@scanreq.com</a>';
     document.getElementById('errorCard').style.display = 'block';
   }
 

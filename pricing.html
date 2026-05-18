@@ -478,7 +478,7 @@
   <div style="display:flex; gap:20px;">
     <a href="https://github.com/JorgeCedilloAbarca/scanreq">GitHub</a>
     <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq">Marketplace</a>
-    <a href="mailto:jcedatm775@gmail.com">Contact</a>
+    <a href="mailto:support@scanreq.com">Contact</a>
   </div>
 </footer>
 
@@ -513,7 +513,6 @@
     }
     input.style.borderColor = '';
 
-    // Deshabilitar botón mientras se envía
     btn.textContent = '...';
     btn.disabled = true;
 
@@ -528,12 +527,10 @@
         feedback.style.display = 'block';
         input.value = '';
       } else {
-        // Si el servidor falla, al menos guardamos localmente para no perder el email
         input.style.borderColor = '#ef4444';
         feedback.style.display = 'none';
       }
     } catch {
-      // Sin conexión — guardamos localmente como fallback
       input.style.borderColor = '#ef4444';
     } finally {
       btn.textContent = 'Notify me →';
