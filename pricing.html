@@ -395,17 +395,10 @@
         <li><span class="check">✓</span> All future Pro updates included</li>
         <li><span class="check">✓</span> Priority support</li>
       </ul>
-      <button class="btn btn-primary" disabled style="opacity:0.5; cursor:not-allowed;">
-        → Coming soon
+      <button class="btn btn-primary" id="checkoutBtn" onclick="startCheckout()">
+        → Get Pro — <span id="priceLabel">$19</span>
       </button>
-      <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:14px; font-family:-apple-system,sans-serif; line-height:1.6;">
-        Pro is launching very soon. Leave your email and we'll notify you the moment it's available — with an early-bird discount.
-      </p>
-      <div style="display:flex; gap:8px; margin-top:10px;">
-        <input type="email" id="notifyEmail" placeholder="your@email.com" style="flex:1; background:var(--bg); border:1px solid var(--border); border-radius:6px; padding:8px 12px; color:var(--text); font-size:12px; font-family:monospace; outline:none;">
-        <button onclick="submitNotify()" style="background:var(--surface2); border:1px solid rgba(124,106,247,0.3); color:var(--accent2); padding:8px 14px; border-radius:6px; font-size:12px; cursor:pointer; font-family:monospace; white-space:nowrap; transition:background 0.2s;">Notify me →</button>
-      </div>
-      <p id="notifyFeedback" style="font-size:11px; color:var(--green); margin-top:10px; display:none; font-family:-apple-system,sans-serif;">✓ You're on the list. We'll be in touch.</p>
+      <p id="checkoutError" style="font-size:11px; color:#ef4444; text-align:center; margin-top:10px; display:none; font-family:-apple-system,sans-serif;"></p>
     </div>
   </div>
 
@@ -501,40 +494,36 @@
     document.getElementById('label-eur').className = currentCurrency === 'eur' ? 'active' : '';
   }
 
-  async function submitNotify() {
-    const input = document.getElementById('notifyEmail');
-    const btn = document.querySelector('[onclick="submitNotify()"]');
-    const feedback = document.getElementById('notifyFeedback');
+  async function startCheckout() {
+    const btn = document.getElementById('checkoutBtn');
+    const errorEl = document.getElementById('checkoutError');
 
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) {
-      input.style.borderColor = '#ef4444';
-      return;
-    }
-    input.style.borderColor = '';
-
-    btn.textContent = '...';
     btn.disabled = true;
+    btn.textContent = '...';
+    errorEl.style.display = 'none';
 
     try {
-      const res = await fetch('/api/notify', {
+      const res = await fetch('/api/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, currency: currentCurrency })
+        body: JSON.stringify({ currency: currentCurrency })
       });
 
-      if (res.ok) {
-        feedback.style.display = 'block';
-        input.value = '';
+      const data = await res.json();
+
+      if (res.ok && data.url) {
+        window.location.href = data.url;
       } else {
-        input.style.borderColor = '#ef4444';
-        feedback.style.display = 'none';
+        errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+        errorEl.style.display = 'block';
+        btn.disabled = false;
+        btn.innerHTML = '→ Get Pro — <span id="priceLabel">' + (currentCurrency === 'eur' ? '€17' : '$19') + '</span>';
       }
     } catch {
-      input.style.borderColor = '#ef4444';
-    } finally {
-      btn.textContent = 'Notify me →';
+      errorEl.textContent = 'Connection error. Please try again.';
+      errorEl.style.display = 'block';
       btn.disabled = false;
+      btn.innerHTML = '→ Get Pro — <span id="priceLabel">' + (currentCurrency === 'eur' ? '€17' : '$19') + '</span>';
     }
   }
 </script>
