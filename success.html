@@ -251,6 +251,9 @@
       const data = await response.json();
 
       if (data.token) {
+        // Fix M2: ocultar errorCard si el reintento tiene éxito.
+        // Antes el card de error se quedaba visible junto al token tras pulsar "Try again".
+        document.getElementById('errorCard').style.display = 'none';
         document.getElementById('tokenValue').textContent = data.token;
         document.getElementById('copyBtn').style.display = 'inline-flex';
         document.getElementById('emailNotice').style.display = 'block';
