@@ -247,12 +247,6 @@
     }
     .video-repo a:hover { text-decoration: underline; }
 
-    .video-desc {
-      font-size: 13px; color: var(--muted); line-height: 1.7;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      margin-bottom: 20px;
-    }
-
     /* RESULT PILLS */
     .result-pills {
       display: flex; flex-wrap: wrap; gap: 8px;
@@ -310,13 +304,13 @@
 
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: var(--muted);
+      background: rgba(124,106,247,0.08); color: var(--accent2);
       padding: 12px 24px; border-radius: 8px;
       font-size: 14px; font-weight: 600; text-decoration: none;
-      border: 1px solid var(--border); transition: all 0.2s;
+      border: 1px solid rgba(124,106,247,0.35); transition: all 0.2s;
       font-family: 'SF Mono', monospace;
     }
-    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+    .btn-ghost:hover { background: rgba(124,106,247,0.16); border-color: rgba(124,106,247,0.55); color: #c4b5fd; }
 
     /* FOOTER */
     footer {
@@ -393,9 +387,6 @@
           Scanned repo:
           <a href="https://github.com/psf/requests" target="_blank" rel="noopener noreferrer">psf/requests</a>
         </p>
-        <p class="video-desc">
-          Pro detects the exact installed version via pip, then queries OSV.dev — finding a CRITICAL CVE on requests 2.28.x and recommending the exact safe upgrade. No guessing, no false negatives.
-        </p>
         <div class="result-pills">
           <span class="pill pill-cve">⚠ 1 CRITICAL CVE</span>
           <span class="pill pill-out">↑ Outdated packages</span>
@@ -423,9 +414,6 @@
         <p class="video-repo">
           Scanned repo:
           <a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">expressjs/express</a>
-        </p>
-        <p class="video-desc">
-          Pro resolves installed versions from package-lock.json, detects 5 HIGH CVEs on axios and multiple major version jumps. The 3-phase update table shows exactly what to update first.
         </p>
         <div class="result-pills">
           <span class="pill pill-cve">⚠ 5 HIGH CVEs</span>
@@ -455,9 +443,6 @@
           Scanned repo:
           <a href="https://gitlab.com/veloren/veloren" target="_blank" rel="noopener noreferrer">veloren/veloren</a>
         </p>
-        <p class="video-desc">
-          In Rust workspaces, sub-crates don't have their own lockfile. Pro walks up to the root Cargo.lock and resolves every version — eliminating ⚠ Unverified badges and enabling CVE scanning across the entire workspace.
-        </p>
         <div class="result-pills">
           <span class="pill pill-cve">⚠ CVEs detected</span>
           <span class="pill pill-out">↑ 53 outdated</span>
@@ -485,9 +470,6 @@
         <p class="video-repo">
           Scanned repo:
           <a href="https://github.com/cli/cli" target="_blank" rel="noopener noreferrer">cli/cli (GitHub CLI)</a>
-        </p>
-        <p class="video-desc">
-          Pro runs <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">go mod graph</code> to surface transitive dependency conflicts invisible in go.mod. Detects version mismatches between indirect dependencies that would only surface at build time.
         </p>
         <div class="result-pills">
           <span class="pill pill-out">↑ Outdated modules</span>
@@ -517,9 +499,6 @@
           Scanned repo:
           <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener noreferrer">laravel/laravel</a>
         </p>
-        <p class="video-desc">
-          Pro reads composer.lock to resolve the exact installed version of every package — including those declared with <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">^</code> or <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">~</code> in composer.json. Full CVE scanning on every resolved version.
-        </p>
         <div class="result-pills">
           <span class="pill pill-out">↑ Outdated packages</span>
           <span class="pill pill-pro">⚡ composer.lock resolved</span>
@@ -547,9 +526,6 @@
         <p class="video-repo">
           Scanned repo:
           <a href="https://github.com/rails/rails" target="_blank" rel="noopener noreferrer">rails/rails</a>
-        </p>
-        <p class="video-desc">
-          Pro uses Gemfile.lock as the source of truth for installed versions, covering all groups (default, development, test). CVE scanning applies to exact locked versions, not the pessimistic specifiers in Gemfile.
         </p>
         <div class="result-pills">
           <span class="pill pill-out">↑ Outdated gems</span>
@@ -579,9 +555,6 @@
           Scanned repo:
           <a href="https://github.com/apache/commons-io" target="_blank" rel="noopener noreferrer">apache/commons-io</a>
         </p>
-        <p class="video-desc">
-          Pro downloads the Spring Boot BOM from Maven Central to resolve versions managed by <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">&lt;parent&gt;</code>, then finds the commons-io CVE with its GHSA ID and exact fixed version.
-        </p>
         <div class="result-pills">
           <span class="pill pill-cve">⚠ CVE on commons-io</span>
           <span class="pill pill-pro">⚡ BOM resolved</span>
@@ -609,9 +582,6 @@
         <p class="video-repo">
           Scanned repo:
           <a href="https://github.com/spring-projects/spring-boot" target="_blank" rel="noopener noreferrer">spring-projects/spring-boot</a>
-        </p>
-        <p class="video-desc">
-          Pro handles both Groovy and Kotlin DSL build files, resolves Spring Boot <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">platform()</code> BOM dependencies, and generates a phased update plan for every outdated artifact.
         </p>
         <div class="result-pills">
           <span class="pill pill-out">↑ Outdated artifacts</span>
