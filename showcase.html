@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Showcase — ScanReq Pro in action</title>
+  <meta name="description" content="See ScanReq Pro scanning real open-source projects. CVE detection, compatibility analysis, and safe update recommendations across 8 ecosystems.">
+  <link rel="canonical" href="https://scanreq.com/showcase">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scanreq.com/showcase">
+  <meta property="og:title" content="ScanReq Pro in action — Real scans on real projects">
+  <meta property="og:description" content="Watch ScanReq Pro detect CVEs and outdated packages on real open-source repos across Python, Node.js, Rust, Go, PHP, Ruby and Java.">
+  <meta property="og:image" content="https://scanreq.com/images/og-card.png">
+  <meta property="og:site_name" content="ScanReq">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ScanReq Pro in action — Real scans on real projects">
+  <meta name="twitter:description" content="Watch ScanReq Pro detect CVEs and outdated packages on real open-source repos across 8 ecosystems.">
+  <meta name="twitter:image" content="https://scanreq.com/images/og-card.png">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #111118;
+      --surface2: #16161f;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e8f0;
+      --muted: #9090a8;
+      --accent: #7c6af7;
+      --accent2: #a78bfa;
+      --green: #34d399;
+      --red: #f87171;
+      --orange: #fb923c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 15px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text); text-decoration: none;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .nav-logo .logo-mark {
+      display: inline-flex; width: 22px; height: 22px;
+      background: var(--accent); border-radius: 4px;
+      align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 900; color: white;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      color: #9898b0; text-decoration: none; font-size: 13px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+    .nav-links .btn-install {
+      color: var(--accent2); border: 1px solid rgba(124,106,247,0.3);
+      padding: 6px 14px; border-radius: 6px;
+      transition: background 0.2s;
+    }
+    .nav-links .btn-install:hover { background: rgba(124,106,247,0.1); }
+
+    /* HERO */
+    .page-hero {
+      padding: 120px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(124,106,247,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .page-label {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent2); margin-bottom: 16px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.05; margin-bottom: 16px;
+    }
+
+    .hero-sub {
+      font-size: 16px; color: var(--muted);
+      max-width: 520px; margin: 0 auto 40px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ECOSYSTEM FILTER */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+      max-width: 900px; margin: 0 auto 64px;
+      padding: 0 24px;
+    }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 6px 16px; border-radius: 20px;
+      font-size: 12px; font-weight: 600; cursor: pointer;
+      font-family: 'SF Mono', monospace;
+      transition: all 0.2s; letter-spacing: 0.02em;
+    }
+
+    .filter-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    .filter-btn.active {
+      background: rgba(124,106,247,0.15);
+      border-color: rgba(124,106,247,0.4);
+      color: var(--accent2);
+    }
+
+    /* VIDEO GRID */
+    .video-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    /* VIDEO CARD */
+    .video-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .video-card.reverse { direction: rtl; }
+    .video-card.reverse > * { direction: ltr; }
+
+    @media (max-width: 720px) {
+      .video-card { grid-template-columns: 1fr; }
+      .video-card.reverse { direction: ltr; }
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 16px; }
+    }
+
+    /* VIDEO PLAYER */
+    .video-wrapper {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrapper video {
+      width: 100%; height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Overlay play button before interaction */
+    .video-wrapper::after {
+      content: '▶';
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; color: rgba(255,255,255,0.7);
+      background: rgba(0,0,0,0.25);
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .video-wrapper.playing::after { opacity: 0; }
+
+    /* VIDEO META */
+    .video-meta {}
+
+    .eco-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .eco-python  { background: rgba(59,130,246,0.12); color: #60a5fa; border: 1px solid rgba(59,130,246,0.25); }
+    .eco-node    { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+    .eco-rust    { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
+    .eco-go      { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.25); }
+    .eco-php     { background: rgba(167,139,250,0.12); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
+    .eco-ruby    { background: rgba(248,113,113,0.12); color: #f87171; border: 1px solid rgba(248,113,113,0.25); }
+    .eco-java    { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+    .eco-gradle  { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+
+    .video-title {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 10px; line-height: 1.2;
+    }
+
+    .video-repo {
+      font-size: 12px; color: var(--muted); margin-bottom: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .video-repo a {
+      color: var(--accent2); text-decoration: none;
+    }
+    .video-repo a:hover { text-decoration: underline; }
+
+    .video-desc {
+      font-size: 13px; color: var(--muted); line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin-bottom: 20px;
+    }
+
+    /* RESULT PILLS */
+    .result-pills {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    .pill-cve    { background: rgba(248,113,113,0.12); color: #f87171; border: 1px solid rgba(248,113,113,0.25); }
+    .pill-out    { background: rgba(251,146,60,0.12);  color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
+    .pill-ok     { background: rgba(52,211,153,0.12);  color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+    .pill-pro    { background: rgba(124,106,247,0.12); color: #a78bfa; border: 1px solid rgba(124,106,247,0.25); }
+
+    /* DIVIDER between cards */
+    .card-divider {
+      border: none; border-top: 1px solid var(--border);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 60px 24px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-section h2 {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      font-size: 15px; color: var(--muted);
+      max-width: 400px; margin: 0 auto 32px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #5a4ee0; color: white;
+      padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; font-family: 'SF Mono', monospace;
+    }
+    .btn-primary:hover { background: #4a3fb5; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--muted);
+      padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      border: 1px solid var(--border); transition: all 0.2s;
+      font-family: 'SF Mono', monospace;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 12px; color: var(--muted);
+      flex-wrap: wrap; gap: 12px;
+    }
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+
+    /* Hidden cards for filter */
+    .video-card[hidden] { display: none; }
+    .card-divider[hidden] { display: none; }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <a href="/" class="nav-logo">
+    <span class="logo-mark" aria-hidden="true">S</span>
+    ScanReq
+  </a>
+  <div class="nav-links">
+    <a href="/#features">Features</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/showcase" class="active">Showcase</a>
+    <a href="/#install">Install</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-install">→ Install Free</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="page-label">Showcase</span>
+    <h1>Pro in action.<br>Real repos. Real results.</h1>
+    <p class="hero-sub">Every video below is a live scan of a public open-source project — no hand-picked examples, no curated data.</p>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-bar" role="group" aria-label="Filter by ecosystem">
+    <button class="filter-btn active" onclick="filterEco('all')" aria-pressed="true">All ecosystems</button>
+    <button class="filter-btn" onclick="filterEco('python')" aria-pressed="false">🐍 Python</button>
+    <button class="filter-btn" onclick="filterEco('node')" aria-pressed="false">🟩 Node.js</button>
+    <button class="filter-btn" onclick="filterEco('rust')" aria-pressed="false">🦀 Rust</button>
+    <button class="filter-btn" onclick="filterEco('go')" aria-pressed="false">🔵 Go</button>
+    <button class="filter-btn" onclick="filterEco('php')" aria-pressed="false">🐘 PHP</button>
+    <button class="filter-btn" onclick="filterEco('ruby')" aria-pressed="false">💎 Ruby</button>
+    <button class="filter-btn" onclick="filterEco('java')" aria-pressed="false">☕ Java</button>
+  </div>
+
+  <!-- VIDEO CARDS -->
+  <div class="video-grid" id="videoGrid">
+
+    <!-- 1. PYTHON -->
+    <article class="video-card" data-eco="python" aria-label="Python demo">
+      <div class="video-wrapper" id="wrap-python">
+        <video
+          src="/videos/showcase-python.mp4"
+          poster="/images/showcase/poster-python.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning the requests Python library"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-python">🐍 Python</span>
+        <h2 class="video-title">CVE on requests,<br>pip version resolved</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/psf/requests" target="_blank" rel="noopener noreferrer">psf/requests</a>
+        </p>
+        <p class="video-desc">
+          Pro detects the exact installed version via pip, then queries OSV.dev — finding a CRITICAL CVE on requests 2.28.x and recommending the exact safe upgrade. No guessing, no false negatives.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-cve">⚠ 1 CRITICAL CVE</span>
+          <span class="pill pill-out">↑ Outdated packages</span>
+          <span class="pill pill-pro">⚡ pip version detected</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="python" aria-hidden="true">
+
+    <!-- 2. NODE.JS -->
+    <article class="video-card reverse" data-eco="node" aria-label="Node.js demo">
+      <div class="video-wrapper" id="wrap-node">
+        <video
+          src="/videos/showcase-node.mp4"
+          poster="/images/showcase/poster-node.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning a Node.js project with axios CVEs"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-node">🟩 Node.js</span>
+        <h2 class="video-title">5 HIGH CVEs on axios,<br>major jumps flagged</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/expressjs/express" target="_blank" rel="noopener noreferrer">expressjs/express</a>
+        </p>
+        <p class="video-desc">
+          Pro resolves installed versions from package-lock.json, detects 5 HIGH CVEs on axios and multiple major version jumps. The 3-phase update table shows exactly what to update first.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-cve">⚠ 5 HIGH CVEs</span>
+          <span class="pill pill-out">↑ 77 outdated</span>
+          <span class="pill pill-pro">⚡ lockfile resolved</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="node" aria-hidden="true">
+
+    <!-- 3. RUST -->
+    <article class="video-card" data-eco="rust" aria-label="Rust demo">
+      <div class="video-wrapper" id="wrap-rust">
+        <video
+          src="/videos/showcase-rust.mp4"
+          poster="/images/showcase/poster-rust.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning the Veloren Rust workspace"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-rust">🦀 Rust</span>
+        <h2 class="video-title">Workspace Cargo.lock<br>resolves all sub-crates</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://gitlab.com/veloren/veloren" target="_blank" rel="noopener noreferrer">veloren/veloren</a>
+        </p>
+        <p class="video-desc">
+          In Rust workspaces, sub-crates don't have their own lockfile. Pro walks up to the root Cargo.lock and resolves every version — eliminating ⚠ Unverified badges and enabling CVE scanning across the entire workspace.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-cve">⚠ CVEs detected</span>
+          <span class="pill pill-out">↑ 53 outdated</span>
+          <span class="pill pill-pro">⚡ workspace lock resolved</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="rust" aria-hidden="true">
+
+    <!-- 4. GO -->
+    <article class="video-card reverse" data-eco="go" aria-label="Go demo">
+      <div class="video-wrapper" id="wrap-go">
+        <video
+          src="/videos/showcase-go.mp4"
+          poster="/images/showcase/poster-go.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning the GitHub CLI Go project"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-go">🔵 Go</span>
+        <h2 class="video-title">Transitive conflicts<br>via go mod graph</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/cli/cli" target="_blank" rel="noopener noreferrer">cli/cli (GitHub CLI)</a>
+        </p>
+        <p class="video-desc">
+          Pro runs <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">go mod graph</code> to surface transitive dependency conflicts invisible in go.mod. Detects version mismatches between indirect dependencies that would only surface at build time.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-out">↑ Outdated modules</span>
+          <span class="pill pill-pro">⚡ transitive graph</span>
+          <span class="pill pill-ok">✓ No CVEs</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="go" aria-hidden="true">
+
+    <!-- 5. PHP -->
+    <article class="video-card" data-eco="php" aria-label="PHP demo">
+      <div class="video-wrapper" id="wrap-php">
+        <video
+          src="/videos/showcase-php.mp4"
+          poster="/images/showcase/poster-php.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning a Laravel PHP project"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-php">🐘 PHP</span>
+        <h2 class="video-title">composer.lock<br>resolves exact versions</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/laravel/laravel" target="_blank" rel="noopener noreferrer">laravel/laravel</a>
+        </p>
+        <p class="video-desc">
+          Pro reads composer.lock to resolve the exact installed version of every package — including those declared with <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">^</code> or <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">~</code> in composer.json. Full CVE scanning on every resolved version.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-out">↑ Outdated packages</span>
+          <span class="pill pill-pro">⚡ composer.lock resolved</span>
+          <span class="pill pill-ok">✓ Compatibility checked</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="php" aria-hidden="true">
+
+    <!-- 6. RUBY -->
+    <article class="video-card reverse" data-eco="ruby" aria-label="Ruby demo">
+      <div class="video-wrapper" id="wrap-ruby">
+        <video
+          src="/videos/showcase-ruby.mp4"
+          poster="/images/showcase/poster-ruby.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning a Ruby on Rails project"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-ruby">💎 Ruby</span>
+        <h2 class="video-title">Gemfile.lock precision<br>across all groups</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/rails/rails" target="_blank" rel="noopener noreferrer">rails/rails</a>
+        </p>
+        <p class="video-desc">
+          Pro uses Gemfile.lock as the source of truth for installed versions, covering all groups (default, development, test). CVE scanning applies to exact locked versions, not the pessimistic specifiers in Gemfile.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-out">↑ Outdated gems</span>
+          <span class="pill pill-pro">⚡ Gemfile.lock resolved</span>
+          <span class="pill pill-ok">✓ Groups analyzed</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="ruby" aria-hidden="true">
+
+    <!-- 7. JAVA MAVEN -->
+    <article class="video-card" data-eco="java" aria-label="Java Maven demo">
+      <div class="video-wrapper" id="wrap-java">
+        <video
+          src="/videos/showcase-java.mp4"
+          poster="/images/showcase/poster-java.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning a Java Maven project with commons-io CVE"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-java">☕ Java (Maven)</span>
+        <h2 class="video-title">Spring Boot BOM resolved,<br>commons-io CVE found</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/apache/commons-io" target="_blank" rel="noopener noreferrer">apache/commons-io</a>
+        </p>
+        <p class="video-desc">
+          Pro downloads the Spring Boot BOM from Maven Central to resolve versions managed by <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">&lt;parent&gt;</code>, then finds the commons-io CVE with its GHSA ID and exact fixed version.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-cve">⚠ CVE on commons-io</span>
+          <span class="pill pill-pro">⚡ BOM resolved</span>
+          <span class="pill pill-ok">✓ Fixed version shown</span>
+        </div>
+      </div>
+    </article>
+
+    <hr class="card-divider" data-eco="java" aria-hidden="true">
+
+    <!-- 8. JAVA GRADLE -->
+    <article class="video-card reverse" data-eco="java" aria-label="Java Gradle demo">
+      <div class="video-wrapper" id="wrap-gradle">
+        <video
+          src="/videos/showcase-gradle.mp4"
+          poster="/images/showcase/poster-gradle.jpg"
+          preload="metadata"
+          controls
+          aria-label="ScanReq Pro scanning a Gradle project"
+        ></video>
+      </div>
+      <div class="video-meta">
+        <span class="eco-badge eco-gradle">☕ Java (Gradle)</span>
+        <h2 class="video-title">Groovy + Kotlin DSL,<br>platform() BOM support</h2>
+        <p class="video-repo">
+          Scanned repo:
+          <a href="https://github.com/spring-projects/spring-boot" target="_blank" rel="noopener noreferrer">spring-projects/spring-boot</a>
+        </p>
+        <p class="video-desc">
+          Pro handles both Groovy and Kotlin DSL build files, resolves Spring Boot <code style="font-size:12px;background:var(--surface2);padding:1px 5px;border-radius:3px;">platform()</code> BOM dependencies, and generates a phased update plan for every outdated artifact.
+        </p>
+        <div class="result-pills">
+          <span class="pill pill-out">↑ Outdated artifacts</span>
+          <span class="pill pill-pro">⚡ platform() resolved</span>
+          <span class="pill pill-ok">✓ Groovy &amp; Kotlin DSL</span>
+        </div>
+      </div>
+    </article>
+
+  </div><!-- /video-grid -->
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to scan your project?</h2>
+    <p>Install free and see your own dependency health in under 30 seconds.</p>
+    <div class="cta-buttons">
+      <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-primary">↗ Install for VS Code — Free</a>
+      <a href="/pricing" class="btn-ghost">→ Get Pro — $19</a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>© 2026 TrustDev · ScanReq</span>
+  <div style="display:flex; gap:20px;">
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer">Marketplace</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/showcase">Showcase</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/recover">Recover token</a>
+    <a href="mailto:support@scanreq.com">Contact</a>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" role="region" aria-label="Cookie notice" style="position:fixed; bottom:0; left:0; right:0; z-index:999; background:rgba(17,17,24,0.97); border-top:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(12px); padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#9090a8;">
+  <span>
+    This site uses cookies strictly necessary for payment processing (Stripe) and infrastructure (Cloudflare). No analytics, no tracking.
+    <a href="/privacy" style="color:#a78bfa;text-decoration:none;margin-left:6px;">Learn more →</a>
+  </span>
+  <button onclick="dismissCookieBanner()" style="background:#5a4ee0; color:white; border:none; padding:7px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; font-family:'SF Mono','Fira Code',monospace; white-space:nowrap; flex-shrink:0;" aria-label="Dismiss cookie notice">Got it</button>
+</div>
+
+<script>
+  // Cookie banner
+  (function() {
+    if (localStorage.getItem('cookieDismissed') === '1') {
+      var b = document.getElementById('cookieBanner');
+      if (b) b.style.display = 'none';
+    }
+  })();
+  function dismissCookieBanner() {
+    localStorage.setItem('cookieDismissed', '1');
+    var b = document.getElementById('cookieBanner');
+    if (b) { b.style.opacity='0'; b.style.transition='opacity 0.3s'; setTimeout(function(){b.style.display='none';},300); }
+  }
+
+  // Mark video wrapper as playing to hide the overlay icon
+  document.querySelectorAll('.video-wrapper video').forEach(function(vid) {
+    vid.addEventListener('play', function() {
+      vid.closest('.video-wrapper').classList.add('playing');
+    });
+    vid.addEventListener('pause', function() {
+      vid.closest('.video-wrapper').classList.remove('playing');
+    });
+    vid.addEventListener('ended', function() {
+      vid.closest('.video-wrapper').classList.remove('playing');
+    });
+  });
+
+  // Ecosystem filter
+  function filterEco(eco) {
+    // Update button states
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      var isActive = (eco === 'all')
+        ? btn.textContent.trim() === 'All ecosystems'
+        : btn.getAttribute('onclick') === "filterEco('" + eco + "')";
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    // Show/hide cards and dividers
+    document.querySelectorAll('#videoGrid [data-eco]').forEach(function(el) {
+      var match = eco === 'all' || el.dataset.eco === eco;
+      el.hidden = !match;
+    });
+  }
+</script>
+
+</body>
+</html>
