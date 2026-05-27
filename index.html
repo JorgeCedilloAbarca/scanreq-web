@@ -557,6 +557,7 @@
     <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
     <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer">Marketplace</a>
     <a href="/pricing">Pricing</a>
+    <a href="/privacy">Privacy</a>
     <a href="/recover">Recover token</a>
     <a href="mailto:support@scanreq.com">Contact</a>
   </div>
@@ -568,6 +569,28 @@
       btn.textContent = 'copied ✓';
       setTimeout(() => btn.textContent = 'copy', 2000);
     });
+  }
+</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner" role="region" aria-label="Cookie notice" style="position:fixed; bottom:0; left:0; right:0; z-index:999; background:rgba(17,17,24,0.97); border-top:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(12px); padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#9090a8;">
+  <span>
+    This site uses cookies strictly necessary for payment processing (Stripe) and infrastructure (Cloudflare). No analytics, no tracking.
+    <a href="/privacy" style="color:#a78bfa;text-decoration:none;margin-left:6px;">Learn more →</a>
+  </span>
+  <button onclick="dismissCookieBanner()" style="background:#5a4ee0; color:white; border:none; padding:7px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; font-family:'SF Mono','Fira Code',monospace; white-space:nowrap; flex-shrink:0;" aria-label="Dismiss cookie notice">Got it</button>
+</div>
+<script>
+  (function() {
+    if (localStorage.getItem('cookieDismissed') === '1') {
+      var b = document.getElementById('cookieBanner');
+      if (b) b.style.display = 'none';
+    }
+  })();
+  function dismissCookieBanner() {
+    localStorage.setItem('cookieDismissed', '1');
+    var b = document.getElementById('cookieBanner');
+    if (b) { b.style.opacity='0'; b.style.transition='opacity 0.3s'; setTimeout(function(){b.style.display='none';},300); }
   }
 </script>
 
