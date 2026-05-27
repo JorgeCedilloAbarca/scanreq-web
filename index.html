@@ -5,9 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScanReq — Multi-Ecosystem Dependency Security Scanner</title>
   <meta name="description" content="Real-time CVE detection and outdated package alerts for Python, Node.js, Rust, Go, PHP, Ruby and Java projects — directly inside VS Code. Zero config. Free.">
+  <link rel="canonical" href="https://scanreq.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scanreq.com/">
+  <meta property="og:title" content="ScanReq — Multi-Ecosystem Dependency Security Scanner">
+  <meta property="og:description" content="Real-time CVE detection and outdated package alerts for Python, Node.js, Rust, Go, PHP, Ruby and Java projects — directly inside VS Code. Zero config. Free.">
+  <meta property="og:image" content="https://scanreq.com/images/og-card.png">
+  <meta property="og:site_name" content="ScanReq">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ScanReq — Multi-Ecosystem Dependency Security Scanner">
+  <meta name="twitter:description" content="Real-time CVE detection and outdated package alerts for Python, Node.js, Rust, Go, PHP, Ruby and Java — directly inside VS Code. Zero config. Free.">
+  <meta name="twitter:image" content="https://scanreq.com/images/og-card.png">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,6 +43,11 @@
     }
 
     html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
 
     body {
       background: var(--bg);
@@ -332,72 +354,72 @@
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main navigation">
   <a href="/" class="nav-logo">
-    <span class="logo-mark">S</span>
+    <span class="logo-mark" aria-hidden="true">S</span>
     ScanReq
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#pro">Pro</a>
     <a href="#install">Install</a>
-    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank">GitHub</a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-install">→ Install Free</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-install">→ Install Free</a>
   </div>
 </nav>
 
 <main>
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
   <div class="hero-badge">
-    <span class="dot"></span>
+    <span class="dot" aria-hidden="true"></span>
     v2.6 — 8 ecosystems · CVE detection · Pro available
   </div>
-  <h1>Know what's vulnerable<br>before your users do</h1>
+  <h1 id="hero-heading">Know what's vulnerable<br>before your users do</h1>
   <p class="hero-sub">Real-time CVE detection and outdated package alerts for Python, Node.js, Rust, Go, PHP, Ruby and Java projects — directly inside VS Code. Zero config. Free.</p>
   <div class="hero-ctas">
-    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-primary">↗ Install for VS Code</a>
-    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" class="btn-ghost">⌥ View on GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-primary">↗ Install for VS Code</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer" class="btn-ghost">⌥ View on GitHub</a>
   </div>
 </section>
 
 <hr class="divider">
 
 <!-- FEATURES -->
-<section id="features">
+<section id="features" aria-labelledby="features-heading">
   <p class="section-label">What it does</p>
-  <h2 class="section-title">Security visibility,<br>zero friction</h2>
+  <h2 class="section-title" id="features-heading">Security visibility,<br>zero friction</h2>
   <p class="section-sub">ScanReq plugs into your existing workflow. Open a project and it just works.</p>
 
   <div class="features-grid">
     <div class="feature-card">
-      <div class="feature-icon">🌐</div>
+      <div class="feature-icon" aria-hidden="true">🌐</div>
       <h3>Multi-Ecosystem Support</h3>
       <p>Scans Python, Node.js, Rust, Go, PHP, Ruby and Java (Maven &amp; Gradle) automatically. 8 ecosystems, zero configuration.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🛡️</div>
+      <div class="feature-icon" aria-hidden="true">🛡️</div>
       <h3>CVE Detection</h3>
       <p>Queries OSV.dev for known vulnerabilities on exact versions (==). CVE IDs and descriptions inline.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">📊</div>
+      <div class="feature-icon" aria-hidden="true">📊</div>
       <h3>Visual Results Panel</h3>
       <p>Color-coded table with version badges and security status. Red, orange, green — health at a glance.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">💡</div>
+      <div class="feature-icon" aria-hidden="true">💡</div>
       <h3>Smart Insights</h3>
       <p>Contextual alerts at the bottom of each scan: critical CVE warnings, bulk update notices, actionable advice.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">⚡</div>
+      <div class="feature-icon" aria-hidden="true">⚡</div>
       <h3>Auto-refresh</h3>
       <p>The panel updates automatically whenever you save any dependency file. No manual re-runs.</p>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌍</div>
-      <h3>English & Spanish</h3>
+      <div class="feature-icon" aria-hidden="true">🌍</div>
+      <h3>English &amp; Spanish</h3>
       <p>UI language follows your VS Code language setting. More languages coming based on user demand.</p>
     </div>
   </div>
@@ -406,20 +428,20 @@
 <hr class="divider">
 
 <!-- PRO -->
-<section id="pro">
+<section id="pro" aria-labelledby="pro-heading">
   <p class="section-label">Pro — Available now</p>
-  <h2 class="section-title">Full coverage<br>for every project</h2>
+  <h2 class="section-title" id="pro-heading">Full coverage<br>for every project</h2>
   <p class="section-sub">The free plan covers exact versions. Pro goes further — CVE scanning for all version specifiers, compatibility analysis, and AI-ready reports.</p>
 
   <div class="pro-section">
     <div>
       <span class="pro-badge">⚡ Pro</span>
       <ul class="pro-features">
-        <li><span class="arrow">→</span> <strong>CVE detection for non-exact versions</strong> — coverage for >=, ~=, ranges and more</li>
-        <li><span class="arrow">→</span> <strong>Cross-version compatibility analysis</strong> — find conflicts before they break your build</li>
-        <li><span class="arrow">→</span> <strong>Safe update recommendations</strong> — know exactly which version to upgrade to</li>
-        <li><span class="arrow">→</span> <strong>🤖 AI prompt export</strong> — one click to copy a structured prompt for Claude, Copilot or Cursor</li>
-        <li><span class="arrow">→</span> <strong>Priority support</strong> — direct access for fast issue resolution</li>
+        <li><span class="arrow" aria-hidden="true">→</span> <strong>CVE detection for non-exact versions</strong> — coverage for >=, ~=, ranges and more</li>
+        <li><span class="arrow" aria-hidden="true">→</span> <strong>Cross-version compatibility analysis</strong> — find conflicts before they break your build</li>
+        <li><span class="arrow" aria-hidden="true">→</span> <strong>Safe update recommendations</strong> — know exactly which version to upgrade to</li>
+        <li><span class="arrow" aria-hidden="true">→</span> <strong>🤖 AI prompt export</strong> — one click to copy a structured prompt for Claude, Copilot or Cursor</li>
+        <li><span class="arrow" aria-hidden="true">→</span> <strong>Priority support</strong> — direct access for fast issue resolution</li>
       </ul>
       <p style="font-size:12px; color:var(--muted); font-family:-apple-system,sans-serif; line-height:1.6;">
         An AI agent doing the same job costs ~$0.85 per scan in tokens. Pro pays for itself in 23 scans — which a working developer hits in a week.
@@ -436,29 +458,29 @@
 <hr class="divider">
 
 <!-- PLANS TABLE -->
-<section>
+<section aria-labelledby="plans-heading">
   <p class="section-label">Plans</p>
-  <h2 class="section-title">Free vs Pro</h2>
+  <h2 class="section-title" id="plans-heading">Free vs Pro</h2>
 
   <table class="plans-table">
     <thead>
       <tr>
-        <th>Feature</th>
-        <th>Free</th>
-        <th class="pro-col">Pro</th>
+        <th scope="col">Feature</th>
+        <th scope="col">Free</th>
+        <th scope="col" class="pro-col">Pro</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>All 8 ecosystems (Python, Node.js, Rust, Go, PHP, Ruby, Java)</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Registry version check (PyPI, npm, crates.io, Maven Central…)</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>CVE detection (exact versions)</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Visual results panel</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Smart insights</td><td><span class="check">✓</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>CVE detection for non-exact versions</td><td><span class="dash">—</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Cross-version compatibility analysis</td><td><span class="dash">—</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Safe update recommendations</td><td><span class="dash">—</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>🤖 AI prompt export</td><td><span class="dash">—</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
-      <tr><td>Priority support</td><td><span class="dash">—</span></td><td class="pro-col"><span class="check">✓</span></td></tr>
+      <tr><td>All 8 ecosystems (Python, Node.js, Rust, Go, PHP, Ruby, Java)</td><td><span class="check" aria-label="Included">✓</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Registry version check (PyPI, npm, crates.io, Maven Central…)</td><td><span class="check" aria-label="Included">✓</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>CVE detection (exact versions)</td><td><span class="check" aria-label="Included">✓</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Visual results panel</td><td><span class="check" aria-label="Included">✓</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Smart insights</td><td><span class="check" aria-label="Included">✓</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>CVE detection for non-exact versions</td><td><span class="dash" aria-label="Not included">—</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Cross-version compatibility analysis</td><td><span class="dash" aria-label="Not included">—</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Safe update recommendations</td><td><span class="dash" aria-label="Not included">—</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>🤖 AI prompt export</td><td><span class="dash" aria-label="Not included">—</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
+      <tr><td>Priority support</td><td><span class="dash" aria-label="Not included">—</span></td><td class="pro-col"><span class="check" aria-label="Included">✓</span></td></tr>
     </tbody>
   </table>
 </section>
@@ -466,23 +488,44 @@
 <hr class="divider">
 
 <!-- SCREENSHOTS -->
-<section>
+<section aria-labelledby="screenshots-heading">
   <p class="section-label">See it in action</p>
-  <h2 class="section-title">Real projects,<br>real results</h2>
+  <h2 class="section-title" id="screenshots-heading">Real projects,<br>real results</h2>
   <p class="section-sub">Scanned against real open-source projects from GitHub — not hand-picked examples.</p>
 
   <div style="display:flex; flex-direction:column; gap:48px;">
     <div>
       <p style="font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; font-family:-apple-system,sans-serif;">Node.js — axios 1.13.0 with 5 HIGH CVEs detected, major version jumps flagged</p>
-      <img src="/images/screenshot1_clean.png" alt="ScanReq panel showing a Node.js project with 77 outdated packages and 13 CVEs, including 5 HIGH severity CVEs on axios" style="width:100%; border-radius:10px; border:1px solid var(--border);">
+      <img
+        src="/images/screenshot1_clean.png"
+        alt="ScanReq panel showing a Node.js project with 77 outdated packages and 13 CVEs, including 5 HIGH severity CVEs on axios"
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+        style="width:100%; height:auto; border-radius:10px; border:1px solid var(--border);">
     </div>
     <div>
       <p style="font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; font-family:-apple-system,sans-serif;">Gradle — commons-io CVE detected inline with GHSA ID and severity</p>
-      <img src="/images/screenshot2_clean.png" alt="ScanReq panel showing a Gradle project with 4 outdated packages and 1 CVE on commons-io" style="width:100%; border-radius:10px; border:1px solid var(--border);">
+      <img
+        src="/images/screenshot2_clean.png"
+        alt="ScanReq panel showing a Gradle project with 4 outdated packages and 1 CVE on commons-io"
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+        style="width:100%; height:auto; border-radius:10px; border:1px solid var(--border);">
     </div>
     <div>
       <p style="font-size:12px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:12px; font-family:-apple-system,sans-serif;">Pro — Safe update plan with 3-phase migration table and compatibility analysis</p>
-      <img src="/images/screenshot3_clean.png" alt="ScanReq Pro compatibility analysis panel showing Phase 1 low-risk and Phase 2 medium-risk update recommendations" style="width:100%; border-radius:10px; border:1px solid var(--border);">
+      <img
+        src="/images/screenshot3_clean.png"
+        alt="ScanReq Pro compatibility analysis panel showing Phase 1 low-risk and Phase 2 medium-risk update recommendations"
+        width="1280"
+        height="720"
+        loading="lazy"
+        decoding="async"
+        style="width:100%; height:auto; border-radius:10px; border:1px solid var(--border);">
     </div>
   </div>
 </section>
@@ -490,18 +533,18 @@
 <hr class="divider">
 
 <!-- INSTALL -->
-<section id="install">
+<section id="install" aria-labelledby="install-heading">
   <p class="section-label">Get started</p>
-  <h2 class="section-title">Install in seconds</h2>
+  <h2 class="section-title" id="install-heading">Install in seconds</h2>
   <p class="section-sub">From the VS Code Command Palette or directly from the terminal:</p>
 
   <div class="install-box">
     <span class="install-cmd">ext install trustdev.scanreq</span>
-    <button class="copy-install" onclick="copyInstall(this)">copy</button>
+    <button class="copy-install" onclick="copyInstall(this)" aria-label="Copy install command">copy</button>
   </div>
 
   <br>
-  <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-primary" style="display:inline-flex; margin-top:8px;">
+  <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex; margin-top:8px;">
     ↗ Open in VS Code Marketplace
   </a>
 </section>
@@ -511,8 +554,8 @@
 <footer>
   <span>© 2026 TrustDev · ScanReq</span>
   <div style="display:flex; gap:20px;">
-    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank">GitHub</a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank">Marketplace</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer">Marketplace</a>
     <a href="/pricing">Pricing</a>
     <a href="/recover">Recover token</a>
     <a href="mailto:support@scanreq.com">Contact</a>

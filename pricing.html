@@ -5,9 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScanReq — Pricing</title>
   <meta name="description" content="Get ScanReq Pro. Full CVE coverage, compatibility analysis, and AI-ready reports. One-time payment, no subscription.">
+  <link rel="canonical" href="https://scanreq.com/pricing">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scanreq.com/pricing">
+  <meta property="og:title" content="ScanReq Pro — $19 one-time, unlimited scans">
+  <meta property="og:description" content="Full CVE coverage, compatibility analysis, and AI-ready reports. One-time payment, no subscription. Covers Python, Node.js, Rust, Go, PHP, Ruby and Java.">
+  <meta property="og:image" content="https://scanreq.com/images/og-card.png">
+  <meta property="og:site_name" content="ScanReq">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ScanReq Pro — $19 one-time, unlimited scans">
+  <meta name="twitter:description" content="Full CVE coverage, compatibility analysis, and AI-ready reports. One-time payment, no subscription.">
+  <meta name="twitter:image" content="https://scanreq.com/images/og-card.png">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,6 +43,11 @@
     }
 
     html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
 
     body {
       background: var(--bg);
@@ -323,17 +345,17 @@
 </head>
 <body>
 
-<nav>
+<nav aria-label="Main navigation">
   <a href="/" class="nav-logo">
-    <span class="logo-mark">S</span>
+    <span class="logo-mark" aria-hidden="true">S</span>
     ScanReq
   </a>
   <div class="nav-links">
     <a href="/#features">Features</a>
     <a href="/pricing" style="color: var(--text);">Pricing</a>
     <a href="/#install">Install</a>
-    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank">GitHub</a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn-install">→ Install Free</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn-install">→ Install Free</a>
   </div>
 </nav>
 
@@ -360,19 +382,19 @@
       <p class="plan-price"><span></span>$0</p>
       <p class="plan-price-note">Forever free, no credit card</p>
       <ul class="plan-features">
-        <li><span class="check">✓</span> All ecosystems: Python, Node.js, Rust, Go, PHP, Ruby, Java</li>
-        <li><span class="check">✓</span> Registry version check (PyPI, npm, crates.io, Maven Central…)</li>
-        <li><span class="check">✓</span> CVE detection (exact versions ==)</li>
-        <li><span class="check">✓</span> Visual results panel</li>
-        <li><span class="check">✓</span> Smart insights</li>
-        <li><span class="check">✓</span> Auto-refresh on save</li>
-        <li><span class="check">✓</span> English & Spanish</li>
-        <li class="inactive"><span class="dash">—</span> CVEs for non-exact versions</li>
-        <li class="inactive"><span class="dash">—</span> Compatibility analysis</li>
-        <li class="inactive"><span class="dash">—</span> Safe update recommendations</li>
-        <li class="inactive"><span class="dash">—</span> AI prompt export</li>
+        <li><span class="check" aria-hidden="true">✓</span> All ecosystems: Python, Node.js, Rust, Go, PHP, Ruby, Java</li>
+        <li><span class="check" aria-hidden="true">✓</span> Registry version check (PyPI, npm, crates.io, Maven Central…)</li>
+        <li><span class="check" aria-hidden="true">✓</span> CVE detection (exact versions ==)</li>
+        <li><span class="check" aria-hidden="true">✓</span> Visual results panel</li>
+        <li><span class="check" aria-hidden="true">✓</span> Smart insights</li>
+        <li><span class="check" aria-hidden="true">✓</span> Auto-refresh on save</li>
+        <li><span class="check" aria-hidden="true">✓</span> English &amp; Spanish</li>
+        <li class="inactive"><span class="dash" aria-hidden="true">—</span> CVEs for non-exact versions</li>
+        <li class="inactive"><span class="dash" aria-hidden="true">—</span> Compatibility analysis</li>
+        <li class="inactive"><span class="dash" aria-hidden="true">—</span> Safe update recommendations</li>
+        <li class="inactive"><span class="dash" aria-hidden="true">—</span> AI prompt export</li>
       </ul>
-      <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" class="btn btn-secondary">
+      <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
         → Install Free
       </a>
     </div>
@@ -384,27 +406,27 @@
       <p class="plan-price" id="price-display"><span>$</span>19</p>
       <p class="plan-price-note" id="price-note">One-time payment · 1 developer license</p>
       <ul class="plan-features">
-        <li><span class="check">✓</span> Everything in Free</li>
-        <li><span class="check">✓</span> CVEs for non-exact versions (>=, ~=, ^…)</li>
-        <li><span class="check">✓</span> Auto-detect installed version (pip / node_modules)</li>
-        <li><span class="check">✓</span> Cross-version compatibility analysis</li>
-        <li><span class="check">✓</span> Dependency conflict detection</li>
-        <li><span class="check">✓</span> Safe update recommendations</li>
-        <li><span class="check">✓</span> 🤖 AI prompt export (Claude, Copilot, Cursor)</li>
-        <li><span class="check">✓</span> Instant license activation</li>
-        <li><span class="check">✓</span> All future Pro updates included</li>
-        <li><span class="check">✓</span> Priority support</li>
+        <li><span class="check" aria-hidden="true">✓</span> Everything in Free</li>
+        <li><span class="check" aria-hidden="true">✓</span> CVEs for non-exact versions (>=, ~=, ^…)</li>
+        <li><span class="check" aria-hidden="true">✓</span> Auto-detect installed version (pip / node_modules)</li>
+        <li><span class="check" aria-hidden="true">✓</span> Cross-version compatibility analysis</li>
+        <li><span class="check" aria-hidden="true">✓</span> Dependency conflict detection</li>
+        <li><span class="check" aria-hidden="true">✓</span> Safe update recommendations</li>
+        <li><span class="check" aria-hidden="true">✓</span> 🤖 AI prompt export (Claude, Copilot, Cursor)</li>
+        <li><span class="check" aria-hidden="true">✓</span> Instant license activation</li>
+        <li><span class="check" aria-hidden="true">✓</span> All future Pro updates included</li>
+        <li><span class="check" aria-hidden="true">✓</span> Priority support</li>
       </ul>
       <button class="btn btn-primary" id="checkoutBtn" onclick="startCheckout()">
         → Get Pro — <span id="priceLabel">$19</span>
       </button>
-      <p id="checkoutError" style="font-size:11px; color:#ef4444; text-align:center; margin-top:10px; display:none; font-family:-apple-system,sans-serif;"></p>
+      <p id="checkoutError" style="font-size:11px; color:#ef4444; text-align:center; margin-top:10px; display:none; font-family:-apple-system,sans-serif;" role="alert"></p>
     </div>
   </div>
 
   <!-- AI COST CALLOUT -->
   <div class="ai-callout">
-    <div class="callout-icon">🤖</div>
+    <div class="callout-icon" aria-hidden="true">🤖</div>
     <div>
       <h2 style="font-size:14px; font-weight:700; margin-bottom:8px; color:var(--text);">Why not just ask an AI to do this?</h2>
       <p>An AI agent doing what ScanReq Pro does would need to query PyPI, OSV.dev, and cross-reference all dependency metadata in real time. That costs <strong>~$0.85 per scan in tokens</strong> with Claude Opus or GPT-4o. With Pro you pay <strong>$19 once</strong> and scan unlimited. After 23 scans you're already ahead — and a developer working on a real project hits that in a week.</p>
@@ -417,22 +439,22 @@
     <p class="section-label">Why Pro</p>
     <div class="why-grid">
       <div class="why-card">
-        <div class="icon">🔍</div>
+        <div class="icon" aria-hidden="true">🔍</div>
         <h3>Full CVE coverage</h3>
         <p>Free only checks exact versions (==). Pro detects your actual installed version via pip and scans everything — >=, ~=, ranges, unpinned.</p>
       </div>
       <div class="why-card">
-        <div class="icon">⚡</div>
+        <div class="icon" aria-hidden="true">⚡</div>
         <h3>Conflict detection</h3>
         <p>Knows when flask==2.0.0 breaks with werkzeug==3.0.0 before you ship. Cross-references requires_dist from PyPI for every package.</p>
       </div>
       <div class="why-card">
-        <div class="icon">🤖</div>
+        <div class="icon" aria-hidden="true">🤖</div>
         <h3>AI-ready reports</h3>
         <p>One click copies a structured prompt with CVEs, conflicts, and safe update recommendations. Paste into Claude or Copilot — done.</p>
       </div>
       <div class="why-card">
-        <div class="icon">🛡️</div>
+        <div class="icon" aria-hidden="true">🛡️</div>
         <h3>Safe update path</h3>
         <p>Don't guess which version to upgrade to. Pro tells you the exact version that fixes the CVE and doesn't break your other dependencies.</p>
       </div>
@@ -469,8 +491,8 @@
 <footer>
   <span>© 2026 TrustDev · ScanReq</span>
   <div style="display:flex; gap:20px;">
-    <a href="https://github.com/JorgeCedilloAbarca/scanreq">GitHub</a>
-    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq">Marketplace</a>
+    <a href="https://github.com/JorgeCedilloAbarca/scanreq" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=trustdev.scanreq" target="_blank" rel="noopener noreferrer">Marketplace</a>
     <a href="/recover">Recover token</a>
     <a href="mailto:support@scanreq.com">Contact</a>
   </div>
