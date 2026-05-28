@@ -374,8 +374,9 @@
       <div class="video-wrapper" id="wrap-python">
         <video
           src="/videos/showcase-python.webm"
-          poster="/images/showcase/poster-python.png"
+          poster="/images/showcase/poster-python.webp"
           preload="metadata"
+          fetchpriority="high"
           controls
           aria-label="ScanReq Pro scanning the requests Python library"
         ></video>
@@ -402,7 +403,7 @@
       <div class="video-wrapper" id="wrap-node">
         <video
           src="/videos/showcase-node.webm"
-          poster="/images/showcase/poster-node.png"
+          poster="/images/showcase/poster-node.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning a Node.js project with axios CVEs"
@@ -430,7 +431,7 @@
       <div class="video-wrapper" id="wrap-rust">
         <video
           src="/videos/showcase-rust.webm"
-          poster="/images/showcase/poster-rust.png"
+          poster="/images/showcase/poster-rust.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning the Veloren Rust workspace"
@@ -458,7 +459,7 @@
       <div class="video-wrapper" id="wrap-go">
         <video
           src="/videos/showcase-go.webm"
-          poster="/images/showcase/poster-go.png"
+          poster="/images/showcase/poster-go.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning the GitHub CLI Go project"
@@ -486,7 +487,7 @@
       <div class="video-wrapper" id="wrap-php">
         <video
           src="/videos/showcase-php.webm"
-          poster="/images/showcase/poster-php.png"
+          poster="/images/showcase/poster-php.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning a Laravel PHP project"
@@ -514,7 +515,7 @@
       <div class="video-wrapper" id="wrap-ruby">
         <video
           src="/videos/showcase-ruby.webm"
-          poster="/images/showcase/poster-ruby.png"
+          poster="/images/showcase/poster-ruby.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning a Ruby on Rails project"
@@ -525,7 +526,7 @@
         <h2 class="video-title">7 CVEs including<br>5 HIGH on rack</h2>
         <p class="video-repo">
           Scanned repo:
-          <a href="https://github.com/rails/rails" target="_blank" rel="noopener noreferrer">rails/rails</a>
+          <a href="https://github.com/rails/rails" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;">rails/rails</a>
         </p>
         <div class="result-pills">
           <span class="pill pill-cve">⚠ 7 CVEs</span>
@@ -542,7 +543,7 @@
       <div class="video-wrapper" id="wrap-java">
         <video
           src="/videos/showcase-maven.webm"
-          poster="/images/showcase/poster-maven.png"
+          poster="/images/showcase/poster-maven.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning a Java Maven project with commons-io CVE"
@@ -570,7 +571,7 @@
       <div class="video-wrapper" id="wrap-gradle">
         <video
           src="/videos/showcase-gradle.webm"
-          poster="/images/showcase/poster-gradle.png"
+          poster="/images/showcase/poster-gradle.webp"
           preload="metadata"
           controls
           aria-label="ScanReq Pro scanning a Gradle project"
@@ -622,7 +623,7 @@
 <div id="cookieBanner" role="region" aria-label="Cookie notice" style="position:fixed; bottom:0; left:0; right:0; z-index:999; background:rgba(17,17,24,0.97); border-top:1px solid rgba(255,255,255,0.07); backdrop-filter:blur(12px); padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; color:#9090a8;">
   <span>
     This site uses cookies strictly necessary for payment processing (Stripe) and infrastructure (Cloudflare). No analytics, no tracking.
-    <a href="/privacy" style="color:#a78bfa;text-decoration:none;margin-left:6px;">Learn more →</a>
+    <a href="/privacy" style="color:#a78bfa;text-decoration:none;text-decoration-color:#a78bfa;margin-left:6px;">Learn more →</a>
   </span>
   <button onclick="dismissCookieBanner()" style="background:#5a4ee0; color:white; border:none; padding:7px 18px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; font-family:'SF Mono','Fira Code',monospace; white-space:nowrap; flex-shrink:0;" aria-label="Dismiss cookie notice">Got it</button>
 </div>
